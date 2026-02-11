@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Book Detail{% endblock %}
+
+{% block body %}
+
+<h2 class="mb-4 text-center bg-dark text-white p-2 rounded">
+    {{ book.title }}
+</h2>
+
+<div class="text-center mb-4">
+    <img src="{{ book.cover_img.url }}" class="img-fluid rounded shadow" style="max-height:400px;">
+</div>
+
+<h4 class="text-center text-muted mb-3">
+    ✍️ {{ book.author }}
+</h4>
+<h6 class=" mb-3 text-muted text-center">📅 Uploaded on: {{ book.uploaded_at|date:"F d, Y" }}</h6>
+
+<div class="container" style="max-width:800px;">
+    <p class="lead">{{ book.desc }}</p>
+
+    <div class="text-center mt-4">
+        <a href="{% url 'read_book' book.id %}" class="btn btn-success btn-lg me-3">📖 Read This Book</a>
+        <a href="{% url 'books' %}" class="btn btn-outline-secondary">⬅ Back to Books</a>
+
+    </div>
+</div>
+
+{% endblock %}

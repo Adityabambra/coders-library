@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+
+<!-- 🔥 HERO SECTION -->
+<div class="container-fluid bg-dark text-light py-5">
+    <div class="container text-center">
+        <h1 class="display-4 fw-bold">Welcome to Coders Library 💻📚</h1>
+        <p class="lead mt-3">
+            A digital reading space built for developers, learners, and tech enthusiasts.
+        </p>
+        <a href="{% url 'books' %}" class="btn btn-warning btn-lg mt-3">Explore Books</a>
+    </div>
+</div>
+
+
+<!-- 💡 FEATURES SECTION -->
+<div class="container py-5">
+    <div class="row text-center mb-4">
+        <h2 class="fw-bold">Why Use Coders Library?</h2>
+        <p class="text-muted">Built for modern learners</p>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100">
+                <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4" class="card-img-top" style="height:200px; object-fit:cover;">
+                <div class="card-body">
+                    <h5 class="card-title">Learn Programming</h5>
+                    <p class="card-text">Access books on Python, Django, AI, Web Development and more.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100">
+                <img src="https://images.unsplash.com/photo-1504639725590-34d0984388bd" class="card-img-top" style="height:200px; object-fit:cover;">
+                <div class="card-body">
+                    <h5 class="card-title">Read Anywhere</h5>
+                    <p class="card-text">Open books instantly in your browser — no downloads needed.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100">
+                <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c" class="card-img-top" style="height:200px; object-fit:cover;">
+                <div class="card-body">
+                    <h5 class="card-title">Track Your Progress</h5>
+                    <p class="card-text">Your reading history is saved so you can continue anytime.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- 🧠 CATEGORIES SECTION -->
+<div class="container-fluid bg-light py-5">
+    <div class="container text-center">
+        <h2 class="fw-bold mb-4">Popular Categories</h2>
+        <div class="row g-3">
+            <div class="col-md-3"><span class="badge bg-dark p-3 w-100 fs-6">Python</span></div>
+            <div class="col-md-3"><span class="badge bg-primary p-3 w-100 fs-6">Web Development</span></div>
+            <div class="col-md-3"><span class="badge bg-success p-3 w-100 fs-6">Data Science</span></div>
+            <div class="col-md-3"><span class="badge bg-danger p-3 w-100 fs-6">Machine Learning</span></div>
+        </div>
+    </div>
+</div>
+
+
+<!-- 🚀 CALL TO ACTION -->
+<div class="container text-center py-5">
+    <h2 class="fw-bold">Start Reading Today</h2>
+    <p class="lead text-muted">Knowledge grows when shared 📖</p>
+
+    {% if user.is_authenticated %}
+        <a href="{% url 'books' %}" class="btn btn-success btn-lg mt-3">Go to Books</a>
+    {% else %}
+        <a href="{% url 'sign_up' %}" class="btn btn-primary btn-lg mt-3">Create Free Account</a>
+    {% endif %}
+</div>
+
+{% endblock %}

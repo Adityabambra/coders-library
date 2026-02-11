@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %}Books{% endblock %}
+
+{% block body %}
+<div class="container">
+    {% if query %}
+    <h2 class="mb-4" style="background:black; border-radius:30px; text-align:center; color:white">Showing results for
+        "{{ query }}</span>"</h2>
+    {% else %}
+    <h2 class="mb-4" style="background:black; border-radius:30px; text-align:center; color:white">Available Books 📚
+    </h2>
+    {% endif %}
+
+    <div class="row">
+        {% for book in books %}
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 shadow-sm">
+                <a href="{% url 'book_detail' book.id %}">
+                    <img src="{{ book.cover_img.url }}" class="card-img-top" style="height:250px; object-fit:cover;">
+                </a>
+
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <a href="{% url 'book_detail' book.id %}" class="text-decoration-none text-dark">
+                            {{ book.title }}
+                        </a>
+                    </h4>
+
+                    <h5 class="card-title">{{book.author}}</h5>
+                    <p class="card-text">{{ book.desc|truncatewords:20}}</p>
+                    <a href="{% url 'book_detail' book.id %}" class="btn btn-primary w-100">View Details</a>
+
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        {% if query %}
+        <h3>No books found for "<b>{{ query }}</b>" ❌</h3>
+        {% else %}
+        <h3>No books added yet.</h3>
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

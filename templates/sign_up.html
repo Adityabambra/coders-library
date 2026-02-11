@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Sign Up{% endblock title %}
+
+{% block body %}
+
+<div class="container mb-5" style="max-width:400px;">
+    {% if error %}
+        <div class="alert alert-danger">
+            {{ error }}
+        </div>
+    {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+        <h1 class="h3 mb-3 fw-normal text-center">Please Ender Following Details</h1>
+
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+            <label for="username">Username</label>
+        </div>
+        
+        <div class="form-floating mb-3">
+            <input type="password" class="form-control" id="pass1" name="pass1" placeholder="Password">
+            <label for="pass1">Enter Password</label>
+        </div>
+        
+        <div class="form-floating mb-3">
+            <input type="password" class="form-control" id="pass2" name="pass2" placeholder="Password">
+            <label for="pass2">Enter Password Again</label>
+        </div>
+
+        <button class="btn btn-success w-100 py-2 mb-3" type="submit">Confirm</button>
+    </form>
+</div>
+
+{% endblock body %}
